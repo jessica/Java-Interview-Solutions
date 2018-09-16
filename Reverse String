@@ -1,0 +1,15 @@
+//Write a function that takes a string as input and returns the string reversed.
+
+class Solution {
+    public String reverseString(String s) {
+        String rev = "";
+        int length = s.length();
+        char[] string = new char[length];
+        
+        for(int i= length-1; i >= 0; i--){
+            string[i] = s.charAt(i);
+            rev += string[i];      
+        }        
+        return rev;
+    }
+}
