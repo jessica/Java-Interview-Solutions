@@ -18,13 +18,13 @@ class Solution {
     input: HELLO
         HELLO
          /\
-      HEL  LO
-      /\   /\
-     H EL  L O
-     | /\   /\
-     | L E  OL 
-     | /\
-     H EL
+       LO  HEL
+      /\   /\   
+     O L  EL H
+     | |  /\ |
+     | |  L E|
+     | |  | ||
+     O L  E LH
      
      output: OLLEH
 */
