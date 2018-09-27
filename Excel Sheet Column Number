@@ -1,0 +1,42 @@
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+    ...
+Example 1:
+
+Input: "A"
+Output: 1
+Example 2:
+
+Input: "AB"
+Output: 28
+Example 3:
+
+Input: "ZY"
+Output: 701
+
+class Solution {
+    
+    //A     26(0) + 1 = 1
+    //AB    26(1) + 2 = 28
+    //ZY    26(26) + 25 = 701
+    //BA    26(2) + 1 = 53
+    
+    public int titleToNumber(String s) {
+        int value = 0;
+        for (int i = 0; i < s.length(); i++){
+            value = (value * 26) + s.charAt(i) - 'A' + 1;  
+            //(AB) value = 0 + 65 - 65 + 1 = 1
+            //     value = 26 + 66 - 65 + 1 = 28
+        }
+        return value;
+    }
+}
