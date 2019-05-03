@@ -1,0 +1,59 @@
+Given an array of integers, find if the array contains any duplicates.
+
+Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+
+Example 1:
+
+Input: [1,2,3,1]
+Output: true
+Example 2:
+
+Input: [1,2,3,4]
+Output: false
+Example 3:
+
+Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true
+
+SOLUTION #1:
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashMap<Integer,Integer> hasharr = new HashMap<Integer,Integer>();
+        
+        for(int i=0; i< nums.length ; i++){
+            hasharr.put(nums[i],0);
+        }
+            
+        for(int i=0; i < nums.length; i++){
+            if(hasharr.containsKey(nums[i]))
+                hasharr.replace(nums[i], hasharr.get(nums[i]) + 1);
+        }
+         for(int i=0; i < nums.length; i++)
+            if(hasharr.get(nums[i]) >= 2)
+                return true;
+        
+        return false;
+    }
+}
+
+SOLUTION #2:
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashMap<Integer, Integer> fastMap = new HashMap<Integer, Integer>();
+        for(int i = 0; i < nums.length; i++)
+        {
+            fastMap.put(nums[i], fastMap.getOrDefault(nums[i], 0) + 1);
+        }
+        
+        for(int i: fastMap.keySet())
+        {
+            if(fastMap.get(i) >= 2)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
