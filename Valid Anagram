@@ -1,0 +1,81 @@
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+Example 2:
+
+Input: s = "rat", t = "car"
+Output: false
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+
+
+SOLUTION #1:
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+       if(s.length() != t.length())
+       {
+           return false;
+       }
+       HashMap<Character,Integer> fastMap= new HashMap<Character,Integer>();
+       HashMap<Character,Integer> fastMap2= new HashMap<Character,Integer>(); 
+       for(int i = 0;i < s.length(); i++)
+       {
+           fastMap.put(s.charAt(i), fastMap.getOrDefault(s.charAt(i), 0) + 1);
+       }
+        
+       for(int i = 0;i < t.length(); i++)
+       {
+           fastMap2.put(t.charAt(i), fastMap2.getOrDefault(t.charAt(i), 0) + 1);
+       }
+       
+        if(fastMap.equals(fastMap2))
+        {
+            return true;
+        }
+        return false;
+    }
+}
+
+SOLUTION #2:
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<Character,Integer> saveChars = new HashMap<Character, Integer>();
+        
+        for(int i=0; i < s.length(); i++){
+            saveChars.put(s.charAt(i), 0);
+        }
+        
+        for(int i=0; i < s.length(); i++){
+            if(saveChars.containsKey(s.charAt(i)))
+              saveChars.replace(s.charAt(i), saveChars.get(s.charAt(i)) + 1);         
+        }
+       
+        
+        for(int i=0; i<t.length() ; i++)
+        {
+            if(saveChars.containsKey(t.charAt(i)) && t.length() == s.length())
+            {
+                saveChars.replace(t.charAt(i), saveChars.get(t.charAt(i)) - 1); 
+                if(saveChars.get(t.charAt(i)) == 0){
+                    saveChars.remove(t.charAt(i));
+                }
+                
+            }
+            else{
+                return false;
+            }  
+        }
+    
+        return true;
+    }
+}
+
+
