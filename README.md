@@ -9,3 +9,5 @@ Arrays is Arrays.sort()
 Everything else Collections.sort()
 
 Find a # - Use Binary Search
+
+Double(maybe more loops) for loop Use HashMap(likely for counter)
