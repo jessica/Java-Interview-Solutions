@@ -29,3 +29,31 @@ class Solution {
         return index;
     }
 }
+
+SOLUTION #2
+
+import java.util.*; 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int [] index = new int[2];
+        int complement;
+        Hashtable <Integer, Integer> table = new Hashtable<Integer, Integer>();
+        
+        for(int i=0; i < nums.length; i++){
+            table.put(nums[i], i);
+        }
+        
+        for(int i=0; i < nums.length; i++){
+            complement = target - nums[i];
+            
+            if(table.containsKey(complement)){
+                if( i != table.get(complement)){
+                    index[0] = i;
+                    index[1] = table.get(complement);
+                    return index;
+                }
+            }
+        }
+        return index;
+    }
+}
