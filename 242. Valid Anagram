@@ -14,6 +14,24 @@ class Solution {
         return false;
     }
 }
+Sol 1 alternative )
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())
+        {return false;}
+        char[] sArray = s.toCharArray();
+        char[] tArray = t.toCharArray();
+        
+        Arrays.sort(sArray);
+        Arrays.sort(tArray);
+        for(int i = 0; i < sArray.length; i++)
+        {
+            if(sArray[i] != tArray[i])
+            {return false;}
+        }
+        return true;
+    }
+}
 
 Sol 2)
 class Solution {
