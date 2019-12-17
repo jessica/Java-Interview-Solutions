@@ -1,0 +1,32 @@
+//M Solution | dont understand integer overflow detection
+class Solution {
+    public int reverse(int x) {
+        int original = x;
+        boolean isNeg = false;
+        long answer = 0;
+        int remainder = 0;
+        
+        if(x < 0)
+        {
+            isNeg = true;
+            x *= -1;
+        }
+        
+        while( x > 0)
+        {
+            remainder = x % 10;
+            answer = (answer * 10) + remainder;
+            x /= 10;
+        }
+        if(answer < Integer.MIN_VALUE || answer > Integer.MAX_VALUE)
+        {
+            return 0;
+        }
+        //cant figure out integer overflow
+        if(isNeg)
+        {
+            answer *= -1;
+        }
+        return (int)answer;
+    }
+}
