@@ -1,4 +1,4 @@
-Score : P | Difficulty : Easy
+Score : P&F | Difficulty : Easy(Weird)
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 Example 1:
@@ -32,6 +32,19 @@ class Solution {
                 nums[j + 1] = nums[j];
             }
             nums[0] = temp;
+        }
+    }
+}
+
+Website Solution 2:
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        int[] a = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            a[(i + k) % nums.length] = nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = a[i];
         }
     }
 }
