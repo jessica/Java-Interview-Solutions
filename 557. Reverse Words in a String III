@@ -1,13 +1,9 @@
-//Write a function that takes a string as input and returns the string reversed.
+Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
 
 Example 1:
-
-Input: "hello"
-Output: "olleh"
-Example 2:
-
-Input: "A man, a plan, a canal: Panama"
-Output: "amanaP :lanac a ,nalp a ,nam A"
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+Note: In the string, each word is separated by single space and there will not be any extra space in the string.
 
 // O(n)
 class Solution {
