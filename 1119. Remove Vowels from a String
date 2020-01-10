@@ -1,0 +1,51 @@
+[Premium] Score : P | Difficulty : Easy
+Given a string S, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
+
+ 
+
+Example 1:
+
+Input: "leetcodeisacommunityforcoders"
+Output: "ltcdscmmntyfrcdrs"
+Example 2:
+
+Input: "aeiou"
+Output: ""
+ 
+
+Note:
+
+S consists of lowercase English letters only.
+1 <= S.length <= 1000
+
+M's Answer:
+class Solution {
+    public String removeVowels(String S) {
+        String ans = "";
+        char a = 'a';
+        char e = 'e';
+        char i = 'i';
+        char o = 'o';
+        char u = 'u';
+        for(int index = 0; index < S.length(); index++)
+        {
+            char letter = S.charAt(index);
+            if(letter == a || letter == e || letter == i || letter == o || letter == u)
+            {
+                continue;
+            }
+            else
+            {
+                ans += letter;
+            }
+        }
+        return ans;
+        
+    }
+}
+
+Discussion answer 1 liner using regex:
+
+    public String removeVowels(String S) {
+        return S.replaceAll("[aeiou]", "");
+    }
