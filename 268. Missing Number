@@ -11,38 +11,27 @@ Output: 8
 Note:
 Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 
-Sol1:
+J Solution:
 
 class Solution {
-    public int missingNumber(int[] nums) 
-    {
+    public int missingNumber(int[] nums) {
         Arrays.sort(nums);
-        if(nums.length == 1)
-        {
-            if(nums[0] == 0)
-            {
+        int i;
+        
+        if(nums.length == 1){
+            if(nums[0] != 0){
+                return 0;
+            } else {
                 return nums[0] + 1;
             }
-            else
-            {
-                return nums[0] - 1;
-            }
-            
         }
         
-        if(nums[0] != 0)
-        {
-            return 0;
-        }
-        
-        for(int i = 0; i < nums.length - 1; i++)
-        {
-            if(nums[i] != nums[i+1] - 1)
-            {
-                return nums[i] + 1;
+        for(i = 0; i < nums.length; i++){
+            if(i != nums[i]){
+                return i;
             }
         }
-        return nums[nums.length-1] + 1;
+        return i;
     }
 }
 
