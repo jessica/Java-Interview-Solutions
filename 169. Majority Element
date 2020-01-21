@@ -40,3 +40,33 @@ class Solution {
         return -1;
     }
 }
+
+M's slower solution:
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(!set.contains(nums[i]))
+            {
+                map.put(nums[i], 1);
+                set.add(nums[i]);
+            }
+            else
+            {
+                map.replace(nums[i], map.get(nums[i]) + 1);
+            }
+        }
+        Iterator<Integer> iter = set.iterator();
+        while(iter.hasNext())
+        {
+            int number = iter.next();
+            if(map.get(number) > nums.length/2)
+            {
+                return number;
+            }
+        }
+        return -1;
+    }
+}
