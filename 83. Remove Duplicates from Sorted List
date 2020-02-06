@@ -1,0 +1,42 @@
+Score : P : | Difficulty : Easy ( Took some thinking and debugging)
+Given a sorted linked list, delete all duplicates such that each element appear only once.
+
+Example 1:
+
+Input: 1->1->2
+Output: 1->2
+Example 2:
+
+Input: 1->1->2->3->3
+Output: 1->2->3
+
+
+M's Answer (using extra space, but fast):
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode answer = new ListNode(-1337);
+        ListNode pointer = answer;
+        while(head != null)
+        {
+            if(pointer.val != head.val)
+            {
+                pointer.next = new ListNode(head.val);
+                pointer = pointer.next;
+                head = head.next;
+            }
+            else
+            {
+                head = head.next;
+            }
+        }
+        return answer.next;
+    }
+}
