@@ -11,7 +11,7 @@ Input: 1->1->2->3->3
 Output: 1->2->3
 
 
-M's Answer (using extra space, but fast):
+M's Answer (apperently faster... but weird):
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -38,5 +38,31 @@ class Solution {
             }
         }
         return answer.next;
+    }
+}
+Site's Solution(less code,simpler....ish);
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode pointer = head;
+        while(pointer != null && pointer.next != null)
+        {
+            if(pointer.val == pointer.next.val)
+            {
+                pointer.next = pointer.next.next;
+            }
+            else
+            {
+                pointer = pointer.next;
+            }
+        }
+        return head;
     }
 }
