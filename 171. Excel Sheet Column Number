@@ -24,24 +24,7 @@ Example 3:
 Input: "ZY"
 Output: 701
 
-M's Lazy No HashMap Solution:
-class Solution {
-    public int titleToNumber(String s) {
-        int total = 0;
-        int power = s.length() - 1;
-        for(int i = 0; i < s.length(); i++)
-        {
-            
-            System.out.println( ((int)(s.charAt(i))) - 64);
-            System.out.println( i);
-            total += Math.pow(26,power) * (((int)(s.charAt(i))) - 64); 
-            power--;
-        }
-        return total;
-    }
-}
-
-J's solution:
+J's solution (a bit faster):
 class Solution {
     public int titleToNumber(String s) {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -83,3 +66,21 @@ class Solution {
         return sum;
     }
 }
+
+M's Lazy No HashMap Solution:
+class Solution {
+    public int titleToNumber(String s) {
+        int total = 0;
+        int power = s.length() - 1;
+        for(int i = 0; i < s.length(); i++)
+        {
+            
+            System.out.println( ((int)(s.charAt(i))) - 64);
+            System.out.println( i);
+            total += Math.pow(26,power) * (((int)(s.charAt(i))) - 64); 
+            power--;
+        }
+        return total;
+    }
+}
+
