@@ -41,3 +41,25 @@ class Solution {
     return maxSum;
   }
 }
+
+M's n^2 solution:
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum = 0;
+        int highestSum = Integer.MIN_VALUE;
+        if(nums.length == 0){return Integer.MIN_VALUE;}
+        for(int i = 0; i < nums.length; i++)
+        {
+            for(int j = i; j < nums.length; j++)
+            {
+                sum += nums[j];
+                if(sum > highestSum)
+                {
+                    highestSum = sum;
+                }
+            }
+            sum = 0;
+        }
+        return highestSum;
+    }
+}
