@@ -25,3 +25,32 @@ Return:
     "14",
     "FizzBuzz"
 ]
+
+Solution 1:
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        ArrayList<String> ans = new ArrayList();
+        int start = 1;
+        for(int i = 1; i <= n ; i++)
+        {
+            if(start % 3 == 0 && start % 5== 0)
+            {
+                ans.add("FizzBuzz");
+            }
+            else if(start % 3 == 0)
+            {
+                ans.add("Fizz");
+            }
+            else if(start % 5 == 0)
+            {
+                ans.add("Buzz");
+            }
+            else
+            {
+                ans.add("" + start);
+            }
+            start++;
+        }
+        return ans;
+    }
+}
