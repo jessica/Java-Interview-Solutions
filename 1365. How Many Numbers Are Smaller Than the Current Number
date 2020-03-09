@@ -26,6 +26,55 @@ Input: nums = [7,7,7,7]
 Output: [0,0,0,0]
 
 
+2 Solutions that are faster(dont understand):
+
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] count = new int[101];
+        int[] res = new int[nums.length];
+        
+        for (int i =0; i < nums.length; i++) {
+            count[nums[i]]++;
+        }
+        
+        for (int i = 1 ; i <= 100; i++) {
+            count[i] += count[i-1];    
+        }
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0)
+                res[i] = 0;
+            else 
+                res[i] = count[nums[i] - 1];
+        }
+        
+        return res;        
+    }
+}
+
+
+
+public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] numsCopy = Arrays.copyOf(nums, nums.length);
+        Arrays.sort(numsCopy);
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = binarySearch(numsCopy, nums[i]);
+        }
+        return res;
+    }
+    private int binarySearch(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] < target) l = mid + 1;
+            else r = mid;
+        }
+        return l;
+    }
+
+
 J's Solution O(N^2):
 
 class Solution {
