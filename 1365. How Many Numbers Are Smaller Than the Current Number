@@ -46,7 +46,7 @@ class Solution {
     }
 }
 
-M's Solution:
+M's Solution(n^2):
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] solution = new int[nums.length];
