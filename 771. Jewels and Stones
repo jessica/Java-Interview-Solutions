@@ -36,3 +36,21 @@ class Solution {
     }
 }
 
+J's better solution: 
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int counter = 0;
+        HashSet<Character> map = new HashSet<Character>();
+        for(int i=0; i < J.length(); i++){
+         map.add(J.charAt(i)); 
+               
+        }
+        for(int i=0; i < S.length(); i++){  
+            if(map.contains(S.charAt(i))){
+                counter++;
+            }
+        }
+        return counter;
+    }
+}
