@@ -45,3 +45,25 @@ class Solution {
         return arr;
     }
 }
+
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int [] arr = new int[nums.length];
+        int count = 0;
+        int j = 0;
+        int i = 0;
+        while( i < nums.length){
+            if(nums[j] < nums[i] && i != j) {
+                count++;
+            }
+            j++;
+            arr[i] = count; 
+            if(j >= nums.length){
+                i++;
+                j = 0;
+                count = 0;
+            }
+        }        
+        return arr;
+    }
+}
