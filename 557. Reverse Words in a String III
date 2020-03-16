@@ -43,3 +43,24 @@ public class Solution {
         return reverseString(rightStr) + reverseString(leftStr);
     }
 }
+
+M's solution(n^2):
+class Solution {
+    public String reverseWords(String s) {
+        String[] myA = s.split(" ");
+        String newString = "";
+        
+        for(int i = 0; i < myA.length; i++)
+        {
+            for(int j = myA[i].length() - 1; j > -1; j--)
+            {
+                newString += myA[i].charAt(j);
+            }
+            if(i != myA.length-1)
+            {
+                newString += " ";
+            }
+        }
+        return newString;
+    }
+}
