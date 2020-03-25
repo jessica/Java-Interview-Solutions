@@ -1,4 +1,4 @@
-Score : P || Diffculty: Medium
+Score : P | Diffculty: Medium
 
 
 Given an input string, reverse the string word by word.
@@ -32,6 +32,24 @@ Follow up:
 
 For C programmers, try to solve it in-place in O(1) extra space.
 
+
+J's amazing faster solution (n):
+class Solution {
+    public String reverseWords(String s) {
+        String [] stringArray = s.split(" ");
+        String reversed = "";
+        StringBuilder reversedString = new StringBuilder("");
+        
+        for(int i = stringArray.length - 1; i >= 0; i--){
+            if(!stringArray[i].equals("")){
+                reversedString.append(stringArray[i]);    
+                reversedString.append(" ");   
+            }
+
+        }
+        return reversedString.toString().trim();
+    }
+}
 
 M & J Solution (n):
 
