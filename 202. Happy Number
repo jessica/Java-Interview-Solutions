@@ -43,3 +43,33 @@ class Solution {
         return true;
     }
 }
+M's solution (n) :
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> set = new HashSet<>();
+        int number = n;
+        int total = 0;
+        while(total > -1)
+        {
+            total += Math.pow( number % 10, 2);
+            number /= 10;
+            
+            if(number == 0)
+            {
+                if(total == 1)
+                {
+                    return true;
+                }
+                if(!set.contains(total)){
+                    set.add(total);
+                    number = total;
+                    total = 0;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
