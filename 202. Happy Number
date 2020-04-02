@@ -49,7 +49,7 @@ class Solution {
         HashSet<Integer> set = new HashSet<>();
         int number = n;
         int total = 0;
-        while(total > -1)
+        while(number > 0)
         {
             total += Math.pow( number % 10, 2);
             number /= 10;
