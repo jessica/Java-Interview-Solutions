@@ -11,7 +11,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 
 
-SOLUTION #1
+SOLUTION #1 (n^2):
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -31,7 +31,7 @@ class Solution {
     }
 }
 
-SOLUTION #2
+SOLUTION #2 (n):
 
 import java.util.*; 
 class Solution {
@@ -58,7 +58,7 @@ class Solution {
         return index;
     }
 }
-Solution 3:
+Solution 3 (n) M's prefered:
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
