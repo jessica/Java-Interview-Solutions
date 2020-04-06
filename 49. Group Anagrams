@@ -1,0 +1,44 @@
+Score : P | Difficulty : Medium(Requires Thinking ASF)
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+
+M's Solution (N*NlogN ?):
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if(strs.length == 0){return new ArrayList<>();}
+        HashMap<String, List> ans = new HashMap<>();
+        String[] copy = new String[strs.length];
+        for(int i = 0; i < strs.length; i++)
+        {
+            char[] sort = strs[i].toCharArray();
+            Arrays.sort(sort);
+            copy[i] = String.valueOf(sort);
+        }
+        
+        
+        for(int i = 0; i < strs.length; i++)
+        {
+            if(!ans.containsKey(copy[i]))
+            {
+                ans.put(copy[i], new ArrayList<String>());
+            }
+            ans.get(copy[i]).add(strs[i]);
+        }
+        
+        return new ArrayList(ans.values());
+    }
+}
