@@ -24,7 +24,8 @@ Note:
 The number of nodes in the given list will be between 1 and 100.
 
 
-Solution BESTEST:
+M's Solution BESTEST O(n):
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -47,5 +48,27 @@ class Solution {
             head = head.next;
         }
         return head;
+    }
+}
+
+ M's other solution O(n):
+ 
+ /**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ArrayList<ListNode> listNodes = new ArrayList<>();
+        while(head != null)
+        {
+            listNodes.add(head);
+            head = head.next;
+        }
+        return listNodes.get(listNodes.size() / 2);
     }
 }
