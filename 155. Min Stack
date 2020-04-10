@@ -61,3 +61,55 @@ class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+
+M's Solution :
+class MinStack {
+
+    Stack<Integer> answer;
+    ArrayList<Integer> minimums;
+    /** initialize your data structure here. */
+    public MinStack() {
+        answer = new Stack<>();
+        minimums = new ArrayList<>();
+    }
+
+    public void push(int x) {
+        if(answer.empty())
+        {
+            minimums.add(x);
+        }
+        else if(x <= minimums.get(0))
+        {
+            minimums.add(0, x);
+        }
+        else{
+            minimums.add(x);
+        }
+        answer.add(x);
+    }
+
+    public void pop() {
+        int popped = answer.pop();
+        if(popped == minimums.get(0))
+        {
+            minimums.remove(0);
+        }
+    }
+
+    public int top() {
+        return answer.peek();
+    }
+
+    public int getMin() {
+        return minimums.get(0);
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
