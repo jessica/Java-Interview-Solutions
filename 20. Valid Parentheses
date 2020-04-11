@@ -1,4 +1,4 @@
-Score : F || Difficulty : Easy
+Score : P || Difficulty : Easy
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
@@ -53,5 +53,43 @@ class Solution {
             }
         }
         return stack.empty();
+    }
+}
+M's 2020 solution:
+
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '{')
+            {
+                stack.push('}');
+            }
+            else if(s.charAt(i) == '}' && !stack.isEmpty())
+            {
+                stack.pop();
+            }
+            else if(s.charAt(i) == '(')
+            {
+                stack.push(')');
+            }
+            else if(s.charAt(i) == ')' && !stack.isEmpty())
+            {
+                stack.pop();
+            }
+            else if(s.charAt(i) == '[')
+            {
+                stack.push(']');
+            }
+            else if(s.charAt(i) == ']' && !stack.isEmpty())
+            {
+                stack.pop();
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 }
