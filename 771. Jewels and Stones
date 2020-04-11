@@ -54,3 +54,20 @@ class Solution {
         return counter;
     }
 }
+
+M's Solution O(n):
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        HashSet<Character> set = new HashSet<>();
+        int counter = 0;
+        
+        for(char jewel: J.toCharArray()){set.add(jewel);}
+        for(char stone: S.toCharArray()){
+            if(set.contains(stone)){
+                counter++;
+            }
+        }
+        return counter;
+    }
+}
