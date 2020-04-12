@@ -39,9 +39,7 @@ class Solution {
         while(n < stones.length){
             
             Arrays.sort(stones);
-        
-            j = i-1;
-            
+
             if(stones[j] == stones[i]){
                 stones[j] = 0;
                 stones[i] = 0;
@@ -53,13 +51,7 @@ class Solution {
             }  
             n++;
         }
-        
-        for(i = 0; i < stones.length; i++){
-            if(stones[i] > 0){
-                return stones[i];
-            }
-        }
-        return 0;
+        return stones[stones.length - 2];
     }
 }
 
