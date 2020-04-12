@@ -62,3 +62,26 @@ class Solution {
         return 0;
     }
 }
+
+M's Solution O(NlogN * N):
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        if(stones.length == 1){return stones[0];}
+        Arrays.sort(stones);
+        
+        while(stones[stones.length - 2] != 0){
+            int total = stones[stones.length - 1] - stones[stones.length - 2];
+            if(total > 0)
+            {
+                stones[stones.length - 2] = 0;
+                stones[stones.length - 1] = total;
+            }
+            else{
+                stones[stones.length - 2] = 0;
+                stones[stones.length - 1] = 0;
+            }
+            Arrays.sort(stones);
+        }
+        return stones[stones.length - 1];
+    }
+}
