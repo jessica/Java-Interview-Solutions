@@ -1,3 +1,4 @@
+Score : P | Difficulty : Easy(Need to think)
 In a town, there are N people labelled from 1 to N.  There is a rumor that one of these people is secretly the town judge.
 
 If the town judge exists, then:
@@ -83,6 +84,39 @@ class Solution {
         }
 
         return -1;
+        
+    }
+}
+
+M's Solution Fixed by J <3:
+class Solution {
+    public int findJudge(int N, int[][] trust) {
+        int judge = 0;
+        HashMap<Integer, HashSet<Integer>> map = new HashMap<>();
+
+        for(int i = 0; i < trust.length; i++) {
+            
+                if(map.containsKey(trust[i][0])){
+                    map.get(trust[i][0]).add(trust[i][1]);
+                }
+                else{
+                    map.put(trust[i][0], new HashSet<>());
+                    map.get(trust[i][0]).add(trust[i][1]);
+                }
+            }
+        
+        for(int i = 1; i <= N; i++){
+            if(!map.containsKey(i)){
+                judge = i;
+            }
+        }
+
+        for (Map.Entry<Integer,HashSet<Integer>> entry : map.entrySet()) {
+            if (!entry.getValue().contains(judge)) {
+                return -1;
+            }
+        }
+        return judge;
         
     }
 }
