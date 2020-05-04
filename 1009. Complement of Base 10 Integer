@@ -28,3 +28,14 @@ Note:
 
 0 <= N < 10^9
 This question is the same as 476: https://leetcode.com/problems/number-complement/
+
+class Solution {
+    public int bitwiseComplement(int N) {
+        int x = (int)(Math.log(N) /  
+                  Math.log(2)) ;  
+        int m = 1 << x;  
+        m = m | m - 1;  
+        int n = N ^ m;  
+        return n;
+    }
+}
