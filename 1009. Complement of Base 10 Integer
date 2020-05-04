@@ -29,6 +29,8 @@ Note:
 0 <= N < 10^9
 This question is the same as 476: https://leetcode.com/problems/number-complement/
 
+
+Answer:
 class Solution {
     public int bitwiseComplement(int N) {
         int x = (int)(Math.log(N) /  
