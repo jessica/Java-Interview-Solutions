@@ -22,3 +22,16 @@ Note:
 The given integer is guaranteed to fit within the range of a 32-bit signed integer.
 You could assume no leading zero bit in the integer’s binary representation.
 This question is the same as 1009: https://leetcode.com/problems/complement-of-base-10-integer/
+
+
+Answer:
+class Solution {
+    public int findComplement(int num) {
+        int x = (int)(Math.log(num) /  
+                  Math.log(2)) ;  
+        int m = 1 << x;  
+        m = m | m - 1;  
+        int n = num ^ m;  
+        return n;
+    }
+}
