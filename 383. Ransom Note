@@ -10,7 +10,7 @@ canConstruct("a", "b") -> false
 canConstruct("aa", "ab") -> false
 canConstruct("aa", "aab") -> true
 
-M's Anser with J help:
+M's Answer with J help:
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
         HashMap<Character, Integer> map1 = new HashMap<>();
@@ -35,6 +35,40 @@ class Solution {
         for(char character : ransomNote.toCharArray()){
             if(map2.get(character) == null){return false;}
             if((int)map1.get(character) > (int)map2.get(character)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+J solution:
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character, Integer> map1 = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map2 = new HashMap<Character, Integer>();
+        for(int i = 0; i < ransomNote.length(); i++){
+            if(map1.containsKey(ransomNote.charAt(i))){
+                map1.replace(ransomNote.charAt(i), map1.get(ransomNote.charAt(i)) + 1);
+            } else {
+                map1.put(ransomNote.charAt(i), 1);
+            }
+        }
+        for(int i = 0; i < magazine.length(); i++){
+            if(map2.containsKey(magazine.charAt(i))){
+                map2.replace(magazine.charAt(i), map2.get(magazine.charAt(i)) + 1);
+            } else {
+                map2.put(magazine.charAt(i), 1);
+            }
+        }   
+
+        for(int i = 0; i < ransomNote.length(); i++){
+            if(map2.containsKey(ransomNote.charAt(i))){             
+                if(map1.get(ransomNote.charAt(i)) > map2.get(ransomNote.charAt(i))){
+                    return false;
+                }
+            } else {
+                
                 return false;
             }
         }
