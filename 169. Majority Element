@@ -12,36 +12,30 @@ Example 2:
 Input: [2,2,1,1,1,2,2]
 Output: 2
 
-J + M Solution:
+
+J + M Optimal Answer O(n):
 class Solution {
     public int majorityElement(int[] nums) {
-        int counter = 1;
-        Arrays.sort(nums);
-        
-        if(nums.length == 1)
-        {
-            return nums[0];
-        }
-        for(int i = 0; i < nums.length - 1; i++)
-        {
-            if(nums[i] == nums[i+1])
-            {
-                counter++;
-                if(counter > nums.length/2)
-                {
-                    return nums[i];
-                }
+        int majority = nums.length / 2;
+        if(nums.length == 1){return nums[0];}
+        HashMap<Integer,Integer> map =  new HashMap<>();
+        for(int number : nums){
+            if(map.containsKey(number)){
+                map.replace(number, map.get(number) + 1);
             }
-            else
-            {
-                counter = 1;
+            else{
+                map.put(number, 1);
+            }
+            if(map.get(number) > (nums.length / 2)){
+                    return number;
             }
         }
-        return -1;
+        return 1337;
     }
 }
 
-M's slower solution:
+
+M's solution O(n):
 class Solution {
     public int majorityElement(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -65,6 +59,36 @@ class Solution {
             if(map.get(number) > nums.length/2)
             {
                 return number;
+            }
+        }
+        return -1;
+    }
+}
+
+
+J + M Solution O(nlogn):
+class Solution {
+    public int majorityElement(int[] nums) {
+        int counter = 1;
+        Arrays.sort(nums);
+        
+        if(nums.length == 1)
+        {
+            return nums[0];
+        }
+        for(int i = 0; i < nums.length - 1; i++)
+        {
+            if(nums[i] == nums[i+1])
+            {
+                counter++;
+                if(counter > nums.length/2)
+                {
+                    return nums[i];
+                }
+            }
+            else
+            {
+                counter = 1;
             }
         }
         return -1;
