@@ -14,7 +14,31 @@ Explanation:
 62 + 82 = 100
 12 + 02 + 02 = 1
 
+M's new Solution with J's help:
 
+class Solution {
+    HashSet<Integer> bucket = new HashSet<>();
+    public boolean isHappy(int n) {
+        int copy = n;
+        int total = 0;
+        if(n == 0) {
+            return false;
+        }
+        while(copy != 0){
+            total += Math.pow(copy % 10, 2);
+            copy /= 10;
+        }
+        if(total == 1){
+            return true;
+        }        
+        if(bucket.contains(total)) {
+            return false;
+        }
+        bucket.add(total);
+
+        return isHappy(total);
+    }
+}
 J's solution:
 class Solution {
     public boolean isHappy(int n) {
