@@ -37,6 +37,39 @@ class Solution {
     }
 }
 
+M's solution:
+class Solution {
+    public int[] plusOne(int[] digits) {
+        if(digits.length == 0){
+            return new int[] {1};
+        }
+        digits[digits.length-1] = digits[digits.length-1] + 1;
+        int carry = 0;
+        for(int i = digits.length - 1; i >= 0; i--){
+            int result = digits[i] + carry;
+            carry = 0;
+            
+            if(result > 9){
+                digits[i] = 0;
+                carry = 1;
+                if(i == 0){
+                    int[] answer = new int[digits.length + 1];
+                    for(int j = digits.length - 1; j >= 0; j--){
+                        answer[i+1] =  digits[i];
+                    }
+                    answer[0] = 1;
+                    return answer;
+                }
+            }
+            else{
+               digits[i] = result; 
+            }
+        }
+        
+        return digits;
+    }
+}
+
 #Answer from discussion | EZ to understand
 public int[] plusOne(int[] digits) {
         
