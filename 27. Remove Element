@@ -1,4 +1,4 @@
-Score : F | Difficulty : Easy
+Score : A | Difficulty : Easy | Took some time
 Given an array nums and a value val, remove all instances of that value in-place and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
@@ -65,4 +65,32 @@ public int removeElement(int[] nums, int val) {
         }
     }
     return n;
+}
+
+Jessica's Solution 2021:
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int counter = 0;
+        int j = nums.length - 1;
+        int i = 0;
+        if(nums.length == 1 && nums[0] == val){
+            return 0;
+        }
+            while(i <= j) {
+                if(nums[j] == val) {
+                    j--;
+                    counter++;
+                }
+                 else if(nums[i] == val) {
+                    nums[i] = nums[j];
+                    nums[j] = val;
+                    j--;
+                    counter++;
+                }
+                if(nums[i] != val){
+                    i++;
+                }
+            }
+        return nums.length - counter;
+    }
 }
