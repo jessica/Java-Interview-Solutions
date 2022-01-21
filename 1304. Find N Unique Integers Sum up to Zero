@@ -39,3 +39,22 @@ public static int[] sumZero(int n) {
 
         return answer;
     }
+    
+    
+J's Solution with M's Help:
+class Solution {
+    public int[] sumZero(int n) {
+        if(n==1){return new int[1];}
+        int num = -n / 2;
+        int[] answer = new int[n];
+        for(int i = 0 ; i < n; i++){
+            if(num == 0 && n % 2 == 0){
+                num += 1;
+            }
+            answer[i] = num;
+            num += 1;
+        }
+        return answer;
+    }
+}
+
