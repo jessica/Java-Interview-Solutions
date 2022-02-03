@@ -54,3 +54,33 @@ static public String longestCommonPrefix(String[] strs) {
             }
         }
     }
+    
+    
+J's Solution
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        StringBuilder sb = new StringBuilder();
+        String firstString = strs[0];
+        
+        if(strs.length <= 1 ){
+            return firstString;
+        }
+
+        sb.append(firstString);
+        for(int i = 1; i < strs.length; i++){
+             String word = strs[i];
+             if(word.length() != sb.length()){
+                int minLength = Math.min(word.length(), sb.length());
+                 sb.delete(minLength, sb.length());                
+              }
+            for(int c = sb.length() - 1; 0 <= c; c--){
+                if(word.charAt(c) != sb.charAt(c)){
+                    sb.delete(c, sb.length());       
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+}
